@@ -49,11 +49,37 @@ export default function Component() {
         <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 px-5">
           <div className="container flex h-16 items-center justify-between">
             <Link className="flex items-center gap-2" href="#">
-              <span className="text-xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+              <span className="text-xl font-bold text-black ">
                 CS Innovation
               </span>
             </Link>
-            <nav className="hidden md:flex gap-6">
+            <nav className="hidden md:flex items-center px-8 gap-4 ">
+              {[
+                "회사소개",
+                "전해연마",
+                "산처리",
+                "인증현황",
+                "보유시설",
+                "고객지원",
+              ].map((item) => (
+                <Link
+                  key={item}
+                  href="#"
+                  className="
+
+        text-[15px] 
+        font-semibold 
+        text-gray-700 
+        hover:text-gray-900 
+        transition-colors
+      "
+                >
+                  {item}
+                </Link>
+              ))}
+            </nav>
+
+            {/* <nav className="hidden md:flex gap-6">
               {[
                 "회사소개",
                 "전해연마",
@@ -70,7 +96,7 @@ export default function Component() {
                   {item}
                 </Link>
               ))}
-            </nav>
+            </nav> */}
             <Button
               variant="ghost"
               size="icon"
@@ -103,13 +129,39 @@ export default function Component() {
               ].map((item) => (
                 <Link
                   key={item}
+                  href="#"
+                  className="
+                  ml-5
+        text-[15px] 
+        font-semibold 
+        text-gray-700 
+        hover:text-gray-900 
+        transition-colors
+      "
+                >
+                  {item}
+                </Link>
+              ))}
+            </nav>
+            {/* 
+            <nav className="container py-4 flex flex-col gap-2">
+              {[
+                "회사소개",
+                "전해연마",
+                "산처리",
+                "인증현황",
+                "보유시설",
+                "고객지원",
+              ].map((item) => (
+                <Link
+                  key={item}
                   className="text-sm font-medium text-gray-600 hover:text-orange-500 transition-colors"
                   href="#"
                 >
                   {item}
                 </Link>
               ))}
-            </nav>
+            </nav> */}
           </motion.div>
         )}
         <main className="flex-1 ">
@@ -134,7 +186,7 @@ export default function Component() {
               </h1>
               <p className="mt-4 text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
                 디테일을 넘어, 완벽으로.
-                <br className="hidden md:block" />
+                <br className="block" />
                 CS INNOVATION의 답은 언제나 "최고" 입니다.
               </p>
               <Button
@@ -157,7 +209,7 @@ export default function Component() {
             </div>
           </section>
 
-          <section className="py-20 ">
+          <section className="py-10 ">
             <div className="container mx-auto px-3">
               <div className="grid gap-6 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200">
                 <div className="py-6 px-4">
@@ -205,7 +257,8 @@ export default function Component() {
                 },
                 {
                   title: "Core Technology",
-                  desc: `최적화된 전류 분포와 전해액 제어로 표면의 미세 요철과 불순물을 제거하고, 패시베이션층을 안정화시켜 우수한 내식성과 청정도를 구현하는 고도화된 표면처리 기술을 제공합니다.`,
+                  desc: `최적화된 전류 분포와 전해액 제어로 표면의 미세 요철과 불순물을 제거하고, 
+                  패시베이션층을 안정화시켜 우수한 내식성과 청정도를 구현하는 고도화된 표면처리 기술을 제공합니다.`,
                 },
                 {
                   title: "Quality Control",
@@ -219,7 +272,7 @@ export default function Component() {
                   <h3 className="text-base md:text-lg font-bold uppercase text-gray-800">
                     {item.title}
                   </h3>
-                  <p className="mt-2 text-sm md:text-base text-gray-600 whitespace-normal">
+                  <p className="mt-2 text-sm md:text-base text-gray-600 whitespace-pre-line">
                     {item.desc}
                   </p>
                   {item.buttonText && (
