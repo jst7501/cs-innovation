@@ -44,8 +44,9 @@ const RAW_RUNTIME_STATE =
           ["postcss", "npm:8.4.49"],\
           ["react", "npm:19.0.0-rc-66855b96-20241106"],\
           ["react-dom", "virtual:3a339adb8c2d07fc3c4c800033d8f71ccfe8dee8b662be87724f8f84e358daf231646fbc6526ae090461f1f2c5dd63ca66db56cfebcc9c6f9378e39417951c26#npm:19.0.0-rc-66855b96-20241106"],\
+          ["react-icons", "virtual:3a339adb8c2d07fc3c4c800033d8f71ccfe8dee8b662be87724f8f84e358daf231646fbc6526ae090461f1f2c5dd63ca66db56cfebcc9c6f9378e39417951c26#npm:5.5.0"],\
           ["react-intersection-observer", "virtual:3a339adb8c2d07fc3c4c800033d8f71ccfe8dee8b662be87724f8f84e358daf231646fbc6526ae090461f1f2c5dd63ca66db56cfebcc9c6f9378e39417951c26#npm:9.13.1"],\
-          ["swiper", "npm:11.1.14"],\
+          ["swiper", "npm:11.2.10"],\
           ["tailwind-merge", "npm:2.5.4"],\
           ["tailwindcss", "npm:3.4.14"],\
           ["tailwindcss-animate", "virtual:3a339adb8c2d07fc3c4c800033d8f71ccfe8dee8b662be87724f8f84e358daf231646fbc6526ae090461f1f2c5dd63ca66db56cfebcc9c6f9378e39417951c26#npm:1.0.7"],\
@@ -1565,8 +1566,9 @@ const RAW_RUNTIME_STATE =
           ["postcss", "npm:8.4.49"],\
           ["react", "npm:19.0.0-rc-66855b96-20241106"],\
           ["react-dom", "virtual:3a339adb8c2d07fc3c4c800033d8f71ccfe8dee8b662be87724f8f84e358daf231646fbc6526ae090461f1f2c5dd63ca66db56cfebcc9c6f9378e39417951c26#npm:19.0.0-rc-66855b96-20241106"],\
+          ["react-icons", "virtual:3a339adb8c2d07fc3c4c800033d8f71ccfe8dee8b662be87724f8f84e358daf231646fbc6526ae090461f1f2c5dd63ca66db56cfebcc9c6f9378e39417951c26#npm:5.5.0"],\
           ["react-intersection-observer", "virtual:3a339adb8c2d07fc3c4c800033d8f71ccfe8dee8b662be87724f8f84e358daf231646fbc6526ae090461f1f2c5dd63ca66db56cfebcc9c6f9378e39417951c26#npm:9.13.1"],\
-          ["swiper", "npm:11.1.14"],\
+          ["swiper", "npm:11.2.10"],\
           ["tailwind-merge", "npm:2.5.4"],\
           ["tailwindcss", "npm:3.4.14"],\
           ["tailwindcss-animate", "virtual:3a339adb8c2d07fc3c4c800033d8f71ccfe8dee8b662be87724f8f84e358daf231646fbc6526ae090461f1f2c5dd63ca66db56cfebcc9c6f9378e39417951c26#npm:1.0.7"],\
@@ -2905,6 +2907,28 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["react-icons", [\
+      ["npm:5.5.0", {\
+        "packageLocation": "../../../AppData/Local/Yarn/Berry/cache/react-icons-npm-5.5.0-906730a3cf-10c0.zip/node_modules/react-icons/",\
+        "packageDependencies": [\
+          ["react-icons", "npm:5.5.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:3a339adb8c2d07fc3c4c800033d8f71ccfe8dee8b662be87724f8f84e358daf231646fbc6526ae090461f1f2c5dd63ca66db56cfebcc9c6f9378e39417951c26#npm:5.5.0", {\
+        "packageLocation": "./.yarn/__virtual__/react-icons-virtual-49cf0fd6b4/4/AppData/Local/Yarn/Berry/cache/react-icons-npm-5.5.0-906730a3cf-10c0.zip/node_modules/react-icons/",\
+        "packageDependencies": [\
+          ["react-icons", "virtual:3a339adb8c2d07fc3c4c800033d8f71ccfe8dee8b662be87724f8f84e358daf231646fbc6526ae090461f1f2c5dd63ca66db56cfebcc9c6f9378e39417951c26#npm:5.5.0"],\
+          ["@types/react", "npm:18.3.12"],\
+          ["react", "npm:19.0.0-rc-66855b96-20241106"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["react-intersection-observer", [\
       ["npm:9.13.1", {\
         "packageLocation": "../../../AppData/Local/Yarn/Berry/cache/react-intersection-observer-npm-9.13.1-e97f4d95f9-10c0.zip/node_modules/react-intersection-observer/",\
@@ -3335,10 +3359,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["swiper", [\
-      ["npm:11.1.14", {\
-        "packageLocation": "../../../AppData/Local/Yarn/Berry/cache/swiper-npm-11.1.14-8126fa478a-10c0.zip/node_modules/swiper/",\
+      ["npm:11.2.10", {\
+        "packageLocation": "../../../AppData/Local/Yarn/Berry/cache/swiper-npm-11.2.10-2bf88a66cf-10c0.zip/node_modules/swiper/",\
         "packageDependencies": [\
-          ["swiper", "npm:11.1.14"]\
+          ["swiper", "npm:11.2.10"]\
         ],\
         "linkType": "HARD"\
       }]\

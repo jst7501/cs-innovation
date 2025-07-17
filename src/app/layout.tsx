@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,7 +29,74 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <header className="fixed top-0 z-50 w-full transition-colors duration-300 backdrop-blur bg-black/40 shadow-md">
+          <div className="container mx-auto px-5">
+            <div className="flex h-16 items-center justify-between">
+              {/* Logo / Title */}
+              <Link href="/" className="flex items-center gap-2">
+                <span className="text-2xl font-extrabold text-white tracking-tight">
+                  CS Innovation
+                </span>
+              </Link>
+
+              {/* Navigation */}
+              <nav className="hidden md:flex items-center gap-6">
+                {[
+                  { title: "회사소개", href: "/about" },
+                  { title: "전해연마", href: "/EP" },
+                  { title: "산처리", href: "/AP" },
+                  { title: "인증현황", href: "/certifications" },
+                ].map((item) => (
+                  <Link
+                    key={item.title}
+                    href={item.href}
+                    className="text-white font-medium text-sm uppercase tracking-wide hover:text-gray-300 transition-colors"
+                  >
+                    {item.title}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+          </div>
+        </header>
+        <section
+          className="relative overflow-hidden  flex items-end justify-start bg-black"
+          style={{
+            backgroundImage: `url('/images/img_visual_bg01.png')`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          <div className="relative z-10 p-10 md:p-20 ">
+            <h1 className="text-2xl md:text-8xl font-bold text-white drop-shadow-md">
+              Beyond Precision
+              <br className=" block" />
+              Toward Perfection
+            </h1>
+            <p className="mt-4 text-lg md:text-3xl font-semibold text-gray-400 max-w-2xl md:mx-auto">
+              디테일을 넘어, 완벽으로.
+              <br className="block" />
+              CS INNOVATION의 답은
+              <br className="block" />
+              언제나 "최고" 입니다.
+            </p>
+          </div>
+        </section>
         {children}
+        <footer className="border-t py-6 flex items-center justify-center px-3">
+          <div className="container flex flex-col gap-2 text-center text-sm text-gray-500">
+            <p>CS INNOVATION CO., LTD. ALL RIGHTS RESERVED.</p>
+            <p>
+              경기도 화성시 우정읍 주곡리 836-46｜도로명주소: 우정읍 매바위로
+              26-16｜Tel.070-4252-3689｜Fax.031-351-2689｜jhso167@hanmail.net
+            </p>
+            <p>
+              상호: 주식회사 씨에스이노베이션｜사업자번호: 143-81-18126｜대표:
+              정현석
+            </p>
+          </div>
+        </footer>
       </body>
     </html>
   );
