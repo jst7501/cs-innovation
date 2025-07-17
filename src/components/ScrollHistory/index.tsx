@@ -41,26 +41,7 @@ const timelineSections = [
         title: "사업장 확장 이전",
         detail: "화성시 우정읍으로 확장 이전, 신규 라인 구축",
       },
-      {
-        date: "2013.05",
-        title: "ISO 9001 & 14001 인증",
-        detail: "국제 품질 및 환경 경영 시스템 인증 획득",
-      },
-      {
-        date: "2013.06",
-        title: "벤처기업 인증",
-        detail: "기술력 인정 기반의 중소기업청 벤처 인증 획득",
-      },
-      {
-        date: "2013.07",
-        title: "정회원 인증",
-        detail: "사)벤처기업협회 정회원으로 기업 신뢰도 강화",
-      },
-      {
-        date: "2013.10",
-        title: "CLEAN 사업장 인정",
-        detail: "청정 제조 환경 구축 완료",
-      },
+
       {
         date: "2014.01",
         title: "법인 전환",
@@ -84,30 +65,19 @@ const timelineSections = [
       },
       {
         date: "2017.06",
-        title: "기술연구소 설립",
-        detail: "독립 기술연구소 설치, R&D 전문 조직 정립",
-      },
-      {
-        date: "2017.06",
         title: "연구개발전담부서 인정",
         detail: "중소기업청 연구개발전담부서 인증 완료",
       },
       {
+        date: "2017.06",
+        title: "기술연구소 설립",
+        detail: "독립 기술연구소 설치, R&D 전문 조직 정립",
+      },
+
+      {
         date: "2017.08",
-        title: "EP동 설비 증축",
-        detail: "전해·표면처리 설비 확장, 생산 효율 30% 향상",
-      },
-      {
-        date: "2018",
-        title: "영업허가 & 정부지원",
-        detail:
-          "유해화학물질 영업허가 신청 완료, 수원대학교와 산학연 연구 개발 사업",
-      },
-      {
-        date: "2019",
-        title: "전해세정 신규사업",
-        detail:
-          "전해세정 사업 착수 및 산학연 과제 협력 (수원대학교), 기술 포트폴리오 확장",
+        title: "EP동 공장 증설",
+        detail: "전해·표면처리 설비 확장, 생산 효율 150% 향상",
       },
     ],
   },
@@ -206,7 +176,7 @@ export default function DetailedTimeline() {
                   date={item.date}
                   title={item.title}
                   detail={item.detail}
-                  index={sIdx * 10 + idx}
+                  index={sIdx + idx}
                 />
               ))}
             </div>

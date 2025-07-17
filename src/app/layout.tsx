@@ -29,7 +29,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header className="fixed top-0 z-50 w-full transition-colors duration-300 backdrop-blur bg-black/40 shadow-md">
+        <header className=" sticky top-0 z-50 w-full transition-colors duration-300 backdrop-blur bg-black/40 shadow-md">
           <div className="container mx-auto px-5">
             <div className="flex h-16 items-center justify-between">
               {/* Logo / Title */}
