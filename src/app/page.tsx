@@ -79,24 +79,6 @@ export default function Component() {
               ))}
             </nav>
 
-            {/* <nav className="hidden md:flex gap-6">
-              {[
-                "회사소개",
-                "전해연마",
-                "산처리",
-                "인증현황",
-                "보유시설",
-                "고객지원",
-              ].map((item) => (
-                <Link
-                  key={item}
-                  className="text-sm font-medium text-gray-600 hover:text-orange-500 transition-colors"
-                  href="#"
-                >
-                  {item}
-                </Link>
-              ))}
-            </nav> */}
             <Button
               variant="ghost"
               size="icon"
@@ -143,37 +125,9 @@ export default function Component() {
                 </Link>
               ))}
             </nav>
-            {/* 
-            <nav className="container py-4 flex flex-col gap-2">
-              {[
-                "회사소개",
-                "전해연마",
-                "산처리",
-                "인증현황",
-                "보유시설",
-                "고객지원",
-              ].map((item) => (
-                <Link
-                  key={item}
-                  className="text-sm font-medium text-gray-600 hover:text-orange-500 transition-colors"
-                  href="#"
-                >
-                  {item}
-                </Link>
-              ))}
-            </nav> */}
           </motion.div>
         )}
         <main className="flex-1 ">
-          {/* <section className="relative overflow-hidden py-20  bg-gradient-to-b from-orange-50 to-white ">
-            <div className="container relative mx-auto px-3 "> */}
-
-          {/* <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="max-w-2xl space-y-4"
-              > */}
           <section className="relative overflow-hidden h-[40vh] flex items-center justify-center bg-black">
             <img
               // src="/bg.avif" // 연구소 또는 전해연마 금속 느낌의 배경
@@ -187,32 +141,39 @@ export default function Component() {
               <p className="mt-4 text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
                 디테일을 넘어, 완벽으로.
                 <br className="block" />
-                CS INNOVATION의 답은 언제나 "최고" 입니다.
+                CS INNOVATION의 답은
+                <br className="block" />
+                언제나 "최고" 입니다.
               </p>
               <Button
                 className="
-    mt-6 
-    bg-gray-800 
-    text-white 
-    hover:bg-gray-900 
-    px-5 
-    py-2 
-    rounded-md 
-    shadow-sm 
-    font-medium 
-    tracking-wide 
-    transition-colors
-  "
+                    mt-6 
+                    bg-gray-800 
+                    text-white 
+                    hover:bg-gray-900 
+                    px-5 
+                    py-2 
+                    rounded-md 
+                    shadow-sm 
+                    font-medium 
+                    tracking-wide 
+                    transition-colors
+                  "
               >
                 자세히 보기
               </Button>
             </div>
           </section>
 
-          <section className="py-10 ">
+          <section className="py-10 px-4 ">
             <div className="container mx-auto px-3">
+              {/* <h2 className="text-2xl  font-bold  mb-6 ">미션과 비전</h2> */}
+              <h2 className="text-2xl font-bold mb-6 text-gray-600">
+                산업의 기준을 높이는
+                <br className="block sm:hidden" /> 표면처리 솔루션
+              </h2>
               <div className="grid gap-6 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200">
-                <div className="py-6 px-4">
+                <div className="py-6 ">
                   <h3 className="text-lg font-bold uppercase text-gray-800">
                     INNOVATIVE
                   </h3>
@@ -221,7 +182,7 @@ export default function Component() {
                   </p>
                 </div>
 
-                <div className="py-6 px-4">
+                <div className="py-6 ">
                   <h3 className="text-lg font-bold uppercase text-gray-800">
                     PRECISION
                   </h3>
@@ -230,7 +191,7 @@ export default function Component() {
                   </p>
                 </div>
 
-                <div className="py-6 px-4">
+                <div className="py-6 ">
                   <h3 className="text-lg font-bold uppercase text-gray-800">
                     RELIABILITY
                   </h3>
@@ -242,91 +203,178 @@ export default function Component() {
             </div>
           </section>
 
-          <section className="py-12 bg-gray-50">
-            <div className="container mx-auto px-4 py-8 grid gap-6 sm:grid-cols-1 md:grid-cols-2">
-              {[
-                {
-                  title: "Product",
-                  desc: `스테인리스 탱크, 파이프, 맞춤형 부품까지 고객 요구에 맞춘 전해연마 및 화학적 표면처리를 제공합니다.`,
-                  buttonText: "견적 요청",
-                },
-                {
-                  title: "Certificate",
-                  desc: `ISO 인증을 비롯해 공인된 품질과 신뢰성을 제공합니다.`,
-                  buttonText: "인증 현황",
-                },
-                {
-                  title: "Core Technology",
-                  desc: `최적화된 전류 분포와 전해액 제어로 표면의 미세 요철과 불순물을 제거하고, 
-                  패시베이션층을 안정화시켜 우수한 내식성과 청정도를 구현하는 고도화된 표면처리 기술을 제공합니다.`,
-                },
-                {
-                  title: "Quality Control",
-                  desc: `표면 거칠기(Ra), 청정도, 내식성을 포함한 정밀 검사와 공정 모니터링으로 일관된 품질을 확보합니다.`,
-                },
-              ].map((item) => (
-                <div
-                  key={item.title}
-                  className="p-4 border border-gray-200 text-center break-words"
-                >
-                  <h3 className="text-base md:text-lg font-bold uppercase text-gray-800">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 text-sm md:text-base text-gray-600 whitespace-pre-line">
-                    {item.desc}
-                  </p>
-                  {item.buttonText && (
-                    <Button
-                      className="mt-4 mx-auto bg-white text-gray-800 hover:bg-gray-100 border border-gray-300 rounded-none shadow-none"
-                      onClick={() => alert(item.buttonText)}
-                    >
-                      {item.buttonText}
-                    </Button>
-                  )}
-                </div>
-              ))}
+          <section
+            className="py-12 bg-gray-50 h-screen flex"
+            style={{
+              backgroundImage: "url('/img_visual_bg02_m.png')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            <div className="container mx-auto px-4 py-8 ">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 leading-relaxed">
+                글로벌 전해연마 기술로 더 높은
+                <br className="md:hidden block" />
+                품질을 실현하는 CS이노베이션
+              </h2>
+              <p className="font-semibold text-lg text-[#D8D8D8] mb-6">
+                CS이노베이션은 용기와 혁신적인 기술,
+                <br className="md:hidden block" />
+                그리고 고객의 신뢰를 바탕으로
+                <br className="md:hidden block" />
+                산업의 기대를 뛰어넘는
+                <br className="md:hidden block" />
+                전해연마 솔루션을 만들어갑니다.
+              </p>
+              <div className="border-t border-gray-200 pt-6">
+                {[...Array(4)].map((_, idx) => {
+                  return (
+                    <div key={idx} className="flex items-center mb-4">
+                      <div className="flex-shrink-0">
+                        <img
+                          src={`/icons/ico_N3_0${idx + 1}.svg`} // 아이콘 이미지 경로
+                          alt={`Icon ${idx + 1}`}
+                          className="h-8 w-8"
+                        />
+                      </div>
+                      <div className="ml-3">
+                        <h3 className="text-lg font-semibold text-white">
+                          {`서비스 ${idx + 1}`}
+                        </h3>
+                        <p className="text-sm text-gray-300">
+                          {`서비스 ${idx + 1}에 대한 설명입니다.`}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </section>
 
-          <section className="bg-white border-t border-b border-gray-200 pb-12 pt-6">
-            <div className="container mx-auto px-4 py-4 text-center">
-              <h4 className="text-base font-semibold text-gray-700 mb-2">
-                Our Partners
-              </h4>
-              <p className="text-sm text-gray-500 mb-4">
-                저희와 함께하는 파트너사들입니다.
+          <section
+            className="py-12 bg-gray-50 h-screen "
+            style={{
+              backgroundImage: "url('/img_visual_bg04_m.png')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            <div className="container mx-auto px-4 py-8 ">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                CS이노베이션의 전해연마 기술
+              </h2>
+              <p className="text-lg text-white/80 mb-6">
+                전해연마는 표면의 완성도를
+                <br className="md:hidden block" />
+                극대화하여 귀사의 기술력과 신뢰도를
+                <br className="md:hidden block" />
+                더욱 돋보이게 합니다.
               </p>
+              <div className="flex gap-2">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-2 w-full">
+                  {[
+                    {
+                      type: "전해연마",
+                      description: "",
+                      bgcolor: "bg-[#4C3FAB]",
+                      icon: 1,
+                    },
+                    {
+                      type: "산처리",
+                      description: "",
+                      bgcolor: "bg-[#5B47B2]",
+                      icon: 2,
+                    },
+                    {
+                      type: "기업소개",
+                      description: "",
+                      bgcolor: "bg-[#3BA4C7]",
+                      icon: 3,
+                    },
+                    {
+                      type: "인증현황",
+                      description: "",
+                      bgcolor: "bg-[#5BC3DB]",
+                      icon: 4,
+                    },
+                  ].map((item, idx) => (
+                    <div
+                      key={idx}
+                      className="aspect-square w-full" // 정사각형
+                    >
+                      <Card
+                        className={`${item.bgcolor} w-full h-full shadow-md transition hover:shadow-xl border-none`}
+                      >
+                        <CardContent className="p-4 h-full flex flex-col  justify-center items-center">
+                          <div className="flex flex-row items-center">
+                            <img
+                              src={`/images/img_N6_0${item.icon}.png`} // 아이콘 이미지 경로
+                              alt={`Icon ${item.icon}`}
+                              className="h-10 w-10 object-contain mr-3"
+                            />
+
+                            <h3 className="text-md font-semibold text-white mb-1">
+                              {item.type}
+                            </h3>
+                          </div>
+                          <div>
+                            <button
+                              className="text-sm text-white hover:underline mt-5"
+                              onClick={() => {
+                                // 여기에 클릭 시 동작을 추가할 수 있습니다.
+                                console.log(`${item.type} clicked`);
+                              }}
+                            >
+                              자세히 보기 <ChevronRight className="inline" />
+                            </button>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
-            <div className="overflow-hidden relative">
-              <div className="flex animate-slide gap-6">
-                {[...Array(2)].map((_, repeatIdx) =>
-                  [
-                    { img: "/두산.jpg", alt: "Partner 1" },
-                    { img: "/롯데.png", alt: "Partner 2" },
-                    { img: "/삼성.png", alt: "Partner 3" },
-                    { img: "/에스케이.png", alt: "Partner 4" },
-                    { img: "/엘지.jpg", alt: "Partner 5" },
-                    { img: "/지에스.jpg", alt: "Partner 6" },
-                    { img: "/포스코.png", alt: "Partner 7" },
-                    { img: "/셀트리온.png", alt: "Partner 8" },
-                  ].map((item, i) => (
-                    <div key={`${repeatIdx}-${i}`} className="flex-shrink-0">
+          </section>
+
+          <section
+            style={{
+              backgroundImage: "url('/img_visual_bg04_m.png')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              height: "100vh",
+            }}
+          >
+            <div className="container mx-auto px-4 py-4 text-center">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                CS이노베이션과 함께하는 파트너사
+              </h3>
+            </div>
+            <div className="overflow-hidden relative space-y-1 py-10">
+              {[...Array(2)].map((rowIdx) => (
+                <div key={rowIdx} className=" animate-slide gap-1 mx-5">
+                  {[...Array(9)].map((_, i) => (
+                    <div key={`${rowIdx}-${i}`} className="flex-shrink-0">
                       <img
-                        src={item.img}
-                        alt={item.alt}
-                        className="h-20 w-36 md:h-16 md:w-32 object-contain"
+                        src={`/images/img_N7_0${i + 1}.png`} // 이미지 경로
+                        alt={`Partner ${i + 1}`}
+                        className="h-20 w-36 md:h-16 md:w-32 object-contain p-5 bg-white bg-opacity-80 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
                       />
                     </div>
-                  ))
-                )}
-              </div>
+                  ))}
+                </div>
+              ))}
             </div>
 
             <style jsx>{`
               .animate-slide {
                 display: flex;
                 width: max-content;
-                animation: slide 30s linear infinite;
+                animation: slide 10s linear infinite;
               }
 
               @keyframes slide {
