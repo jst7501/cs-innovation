@@ -260,9 +260,9 @@ export default function Component() {
               <div className="container mx-auto  flex flex-col gap-4 mt-4">
                 <button
                   className="text-xl text-left    py-2 text-white"
-                  onClick={() => (window.location.href = "tel:01036892305")}
+                  onClick={() => (window.location.href = "tel:070-4252-3689")}
                 >
-                  📞 전화번호: 010-3689-2305
+                  📞 전화번호: 070-4252-3689
                 </button>
                 <button
                   className="text-xl text-left    py-2 text-white"
@@ -297,7 +297,7 @@ export default function Component() {
         </main>
       </div>
       <a
-        href="tel:01036892305"
+        href="tel:070-4252-3689"
         className="fixed bottom-5 right-5 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition-colors hover:bg-blue-700"
         aria-label="전화 문의"
       >
