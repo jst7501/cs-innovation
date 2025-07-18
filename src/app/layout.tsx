@@ -20,6 +20,12 @@ export const metadata: Metadata = {
   title: "CS Innovation | 전해연마 전문기업",
   description: "디테일을 넘어, 완벽으로. 전해연마, 표면처리, 금속가공 전문.",
   keywords: ["전해연마", "표면처리", "CS Innovation", "금속가공"],
+  verification: {
+    google: "ZeFp_tjoW_lYaZYagCfzrPJgLFhnwwevi7NsbmZlRBs",
+    other: {
+      "naver-site-verification": "e204ba3b8063524818f65dbbe8c903a430c44673",
+    },
+  },
   openGraph: {
     title: "CS Innovation | 전해연마 전문기업",
     description: "디테일을 넘어, 완벽으로. 전해연마, 표면처리, 금속가공 전문.",
@@ -36,6 +42,24 @@ export default function RootLayout({
   return (
     <html lang="ko" className="scroll-smooth">
       <head>
+        <Script
+          id="ld-json"
+          type="application/ld+json"
+          strategy="afterInteractive"
+        >
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "CS Innovation",
+            url: "https://cs-innovation.vercel.app",
+            logo: "https://cs-innovation.vercel.app/logo/main.jpg",
+            contactPoint: {
+              "@type": "ContactPoint",
+              telephone: "+82-10-3689-2305",
+              contactType: "Customer Service",
+            },
+          })}
+        </Script>
         <Script
           strategy="afterInteractive"
           src={`https://www.googletagmanager.com/gtag/js?id=G-4NLJMMY062`}
