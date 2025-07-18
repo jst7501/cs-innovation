@@ -31,25 +31,47 @@ export default function Component() {
 
       <Head>
         <title>CS Innovation - 전해연마, 산처리 전문업체</title>
+
         <meta
           name="description"
-          content="CS Innovation은 전해연마, 산처리등의 표면처리 솔루션을 제공합니다. 품질과 신뢰를 바탕으로 최적의 금속 표면처리 서비스를 제공합니다."
+          content="CS Innovation은 전해연마, 산처리 등 금속 표면처리의 모든 솔루션을 제공합니다. 품질과 신뢰를 바탕으로 완벽한 서비스를 약속드립니다."
         />
         <meta
           name="keywords"
-          content="전해연마, 산처리, 버핑, 금속 표면처리, 금속 연마, CS Innovation, 전해연마 전문, 산처리 공정, 금속 광택, 부식 방지, 품질 보증, "
+          content="전해연마, 산처리, 금속 표면처리, 금속 연마, CS Innovation, 전해연마 전문, 산처리 공정, 금속 광택, 부식 방지, 품질 보증"
         />
+
         <meta
           property="og:title"
           content="CS Innovation - 전해연마, 산처리 전문업체"
         />
         <meta
           property="og:description"
-          content="CS Innovation은 전해연마, 산처리, 등의 표면처리 솔루션을 제공합니다."
+          content="CS Innovation은 전해연마, 산처리, 금속 표면처리의 선도기업입니다. 디테일을 넘어, 완벽으로."
         />
-        <meta property="og:image" content="/path/to/your-image.jpg" />
-        <meta property="og:url" content="https://www.yourwebsite.com" />
+        <meta
+          property="og:image"
+          content="https://cs-innovation.vercel.app/logo/main.jpg"
+        />
+        <meta property="og:url" content="https://cs-innovation.vercel.app" />
+        <meta property="og:type" content="website" />
+
         <meta name="robots" content="index,follow" />
+        <link rel="canonical" href="https://cs-innovation.vercel.app" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="CS Innovation - 전해연마, 산처리 전문업체"
+        />
+        <meta
+          name="twitter:description"
+          content="CS Innovation은 전해연마, 산처리, 금속 표면처리의 선도기업입니다. 디테일을 넘어, 완벽으로."
+        />
+        <meta
+          name="twitter:image"
+          content="https://cs-innovation.vercel.app/logo/main.jpg"
+        />
       </Head>
       <div className="flex min-h-screen flex-col ">
         <main className="flex-1 ">
