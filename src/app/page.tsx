@@ -5,6 +5,7 @@ import Head from "next/head";
 import { useRouter } from "next/navigation";
 import TimelineScrollMotion from "@/components/ScrollHistory";
 import Vision from "@/components/Vision";
+import Nav from "@/components/Nav";
 
 export default function Component() {
   const [bgUrl, setBgUrl] = useState("/img_visual_bg01.png");
@@ -26,6 +27,8 @@ export default function Component() {
 
   return (
     <>
+      <Nav />
+
       <Head>
         <title>CS Innovation - 전해연마, 산처리 전문업체</title>
         <meta

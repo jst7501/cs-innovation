@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Tab } from "@headlessui/react";
-
+import Nav from "@/components/Nav";
 import {
   Card,
   CardContent,
@@ -65,73 +65,76 @@ const patents = [
 
 export default function StatusPage() {
   return (
-    <main className="bg-gray-50 py-16">
-      <div className="max-w-6xl mx-auto px-4">
-        <Tab.Group>
-          <Tab.List className="flex justify-center space-x-4 mb-12">
-            <Tab
-              className={({ selected }) =>
-                `px-6 py-2 rounded-full font-semibold transition ${
-                  selected
-                    ? "bg-purple-600 text-white shadow-lg"
-                    : "bg-white text-gray-700 hover:bg-gray-100"
-                }`
-              }
-            >
-              인증 현황
-            </Tab>
-            <Tab
-              className={({ selected }) =>
-                `px-6 py-2 rounded-full font-semibold transition ${
-                  selected
-                    ? "bg-purple-600 text-white shadow-lg"
-                    : "bg-white text-gray-700 hover:bg-gray-100"
-                }`
-              }
-            >
-              특허 현황
-            </Tab>
-          </Tab.List>
-
-          <Tab.Panels>
-            {[
-              { data: certifications, title: "인증 현황" },
-              { data: patents, title: "특허 현황" },
-            ].map((section, idx) => (
-              <Tab.Panel
-                key={idx}
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+    <>
+      <Nav />
+      <main className="bg-gray-50 py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <Tab.Group>
+            <Tab.List className="flex justify-center space-x-4 mb-12">
+              <Tab
+                className={({ selected }) =>
+                  `px-6 py-2 rounded-full font-semibold transition ${
+                    selected
+                      ? "bg-purple-600 text-white shadow-lg"
+                      : "bg-white text-gray-700 hover:bg-gray-100"
+                  }`
+                }
               >
-                {section.data.map((item, i) => (
-                  <Card
-                    key={i}
-                    className="group bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition"
-                  >
-                    <CardContent className="p-0 relative">
-                      <Image
-                        src={item.imageUrl}
-                        alt={item.title}
-                        width={640}
-                        height={360}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent opacity-30"></div>
-                    </CardContent>
-                    <CardHeader className="p-6">
-                      <CardTitle className="text-lg font-semibold text-gray-900">
-                        {item.title}
-                      </CardTitle>
-                      <CardDescription className="mt-2 text-gray-500">
-                        {item.description}
-                      </CardDescription>
-                    </CardHeader>
-                  </Card>
-                ))}
-              </Tab.Panel>
-            ))}
-          </Tab.Panels>
-        </Tab.Group>
-      </div>
-    </main>
+                인증 현황
+              </Tab>
+              <Tab
+                className={({ selected }) =>
+                  `px-6 py-2 rounded-full font-semibold transition ${
+                    selected
+                      ? "bg-purple-600 text-white shadow-lg"
+                      : "bg-white text-gray-700 hover:bg-gray-100"
+                  }`
+                }
+              >
+                특허 현황
+              </Tab>
+            </Tab.List>
+
+            <Tab.Panels>
+              {[
+                { data: certifications, title: "인증 현황" },
+                { data: patents, title: "특허 현황" },
+              ].map((section, idx) => (
+                <Tab.Panel
+                  key={idx}
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+                >
+                  {section.data.map((item, i) => (
+                    <Card
+                      key={i}
+                      className="group bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition"
+                    >
+                      <CardContent className="p-0 relative">
+                        <Image
+                          src={item.imageUrl}
+                          alt={item.title}
+                          width={640}
+                          height={360}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent opacity-30"></div>
+                      </CardContent>
+                      <CardHeader className="p-6">
+                        <CardTitle className="text-lg font-semibold text-gray-900">
+                          {item.title}
+                        </CardTitle>
+                        <CardDescription className="mt-2 text-gray-500">
+                          {item.description}
+                        </CardDescription>
+                      </CardHeader>
+                    </Card>
+                  ))}
+                </Tab.Panel>
+              ))}
+            </Tab.Panels>
+          </Tab.Group>
+        </div>
+      </main>{" "}
+    </>
   );
 }

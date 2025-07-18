@@ -1,9 +1,8 @@
-"use client";
-
+// "use client";
 import localFont from "next/font/local";
 import "./globals.css";
-import Nav from "@/components/Nav";
 import Script from "next/script";
+import { Metadata } from "next";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -15,6 +14,18 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
+
+export const metadata: Metadata = {
+  title: "CS Innovation | 전해연마 전문기업",
+  description: "디테일을 넘어, 완벽으로. 전해연마, 표면처리, 금속가공 전문.",
+  keywords: ["전해연마", "표면처리", "CS Innovation", "금속가공"],
+  openGraph: {
+    title: "CS Innovation | 전해연마 전문기업",
+    description: "디테일을 넘어, 완벽으로. 전해연마, 표면처리, 금속가공 전문.",
+    images: ["/logo/main.jpg"],
+  },
+  robots: "index, follow",
+};
 
 export default function RootLayout({
   children,
@@ -45,7 +56,7 @@ export default function RootLayout({
             style={{ display: "none", visibility: "hidden" }}
           ></iframe>
         </noscript>
-        <Nav />
+        {/* <Nav /> */}
         {/* Hero Section */}
         <section
           className="relative overflow-hidden flex items-end justify-start bg-black"
