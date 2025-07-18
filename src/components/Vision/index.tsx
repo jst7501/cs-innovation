@@ -168,7 +168,8 @@ export default function Vision() {
         </Box>
         <Grid container spacing={3} mb={{ xs: 4, md: 8 }}>
           {missions.map((item, idx) => (
-            <Grid item xs={12} sm={6} md={4} key={idx}>
+            // <Grid item xs={12} sm={6} md={4} key={idx}>
+            <Grid spacing={{ xs: 12, md: 8 }} key={idx}>
               <InfoCard {...item} />
             </Grid>
           ))}
@@ -204,7 +205,7 @@ export default function Vision() {
         </Box>
         <Grid container spacing={3}>
           {values.map((item, idx) => (
-            <Grid item xs={12} sm={6} md={3} key={idx}>
+            <Grid spacing={{ xs: 12, md: 8 }} key={idx}>
               <InfoCard {...item} />
             </Grid>
           ))}

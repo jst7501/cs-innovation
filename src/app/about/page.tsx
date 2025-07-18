@@ -17,7 +17,7 @@ export default function AboutPage() {
         <Container maxWidth="md">
           {/* CEO 인사말 */}
           <Section id="ceo">
-            <Grid item xs={12} md={8}>
+            <Grid spacing={{ xs: 12, md: 8 }}>
               <Typography
                 variant="h4"
                 gutterBottom
