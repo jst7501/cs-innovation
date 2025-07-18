@@ -95,13 +95,13 @@ export default function RootLayout({
         </noscript>
         {/* <Nav /> */}
         {/* Hero Section */}
-        <section className="relative overflow-hidden flex items-end justify-start bg-black">
+        <section className="relative overflow-hidden flex items-end justify-start bg-black h-[60vh]">
           <Image
             src="/images/glassbg3.jpg"
             alt="Hero Background"
             fill
             priority
-            sizes="60vw"
+            sizes="60vw "
             className="object-cover"
           />
           <div className="relative z-10 p-10 md:p-20">
