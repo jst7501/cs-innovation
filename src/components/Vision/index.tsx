@@ -166,14 +166,13 @@ export default function Vision() {
             CS이노베이션
           </Typography>
         </Box>
-        <Grid container spacing={3} mb={{ xs: 4, md: 8 }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {missions.map((item, idx) => (
-            // <Grid item xs={12} sm={6} md={4} key={idx}>
-            <Grid spacing={{ xs: 12, md: 8 }} key={idx}>
+            <div key={idx}>
               <InfoCard {...item} />
-            </Grid>
+            </div>
           ))}
-        </Grid>
+        </div>
 
         {/* Values Section */}
         <Box
@@ -203,13 +202,13 @@ export default function Vision() {
             CS이노베이션의 핵심 가치
           </Typography>
         </Box>
-        <Grid container spacing={3}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           {values.map((item, idx) => (
-            <Grid spacing={{ xs: 12, md: 8 }} key={idx}>
+            <div key={idx}>
               <InfoCard {...item} />
-            </Grid>
+            </div>
           ))}
-        </Grid>
+        </div>
       </Container>
     </Box>
   );

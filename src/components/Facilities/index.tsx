@@ -44,25 +44,41 @@ const facilities = [
 export default function Facilities() {
   return (
     <Box sx={{ mt: 4 }}>
-      <Grid container spacing={4}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         {facilities.map((fac) => (
-          // <Grid item xs={12} sm={6} key={fac.title}>
-          <Grid spacing={{ xs: 12, md: 8 }} key={fac.title}>
+          <div key={fac.title} className="flex h-full">
             <Card
               elevation={3}
               sx={{
+                display: "flex",
+                flexDirection: "column",
+                flexGrow: 1,
                 borderRadius: 2,
                 transition: "transform .3s, box-shadow .3s",
                 "&:hover": { transform: "translateY(-4px)", boxShadow: 6 },
               }}
             >
-              <CardContent>
+              <CardContent
+                sx={{ display: "flex", flexDirection: "column", flexGrow: 1 }}
+              >
                 <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
                   <Box sx={{ mr: 2 }}>{fac.icon}</Box>
                   <Typography variant="h6">{fac.title}</Typography>
                 </Box>
+
                 <Divider sx={{ mb: 1 }} />
-                <Box component="ul" sx={{ pl: 2, m: 0 }}>
+
+                <Box
+                  component="ul"
+                  sx={{
+                    pl: 2,
+                    m: 0,
+                    flexGrow: 1, // 남는 공간 채움
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-start",
+                  }}
+                >
                   {fac.items.map((it) => (
                     <li key={it}>
                       <Typography variant="body2">{it}</Typography>
@@ -71,9 +87,9 @@ export default function Facilities() {
                 </Box>
               </CardContent>
             </Card>
-          </Grid>
+          </div>
         ))}
-      </Grid>
+      </div>
     </Box>
   );
 }
