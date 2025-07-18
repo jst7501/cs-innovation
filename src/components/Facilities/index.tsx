@@ -46,7 +46,8 @@ export default function Facilities() {
     <Box sx={{ mt: 4 }}>
       <Grid container spacing={4}>
         {facilities.map((fac) => (
-          <Grid item xs={12} sm={6} key={fac.title}>
+          // <Grid item xs={12} sm={6} key={fac.title}>
+          <Grid spacing={{ xs: 12, md: 8 }} key={fac.title}>
             <Card
               elevation={3}
               sx={{
