@@ -1,13 +1,7 @@
-// app/status/page.tsx
 "use client";
 
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation, Autoplay } from "swiper/modules";
-
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
+import { Tab } from "@headlessui/react";
 
 import {
   Card,
@@ -36,11 +30,10 @@ const certifications = [
   {
     title: "뿌리기술 전문기업 지정증",
     description: "뿌리기술 분야에서의 전문성을 인정받은 인증서",
-    imageUrl: "/cert/뿌리기술 전문기업 지정증-1.png", // 예시 이미지 경로
+    imageUrl: "/cert/뿌리기술 전문기업 지정증-1.png",
   },
 ];
 
-// 특허public/cert/특허증(페로브스카이트 전구체 용액) 2025-07-09-2.png public/cert/특허증 전해연마용 탄소 전극 및 이의 제조방법 2022-05-02-1.png public/cert/특허증(페로브스카이트 전구체 용액) 2025-07-09-1.png public/cert/특허증 2024-10-04-1.png public/cert/특허증 (전해연마용 탄소 전극 및 이의 제조방법)-2.png public/cert/특허증 (전해연마용 탄소 전극 및 이의 제조방법)-1.png public/cert/특허증 (전해연마 장치)2017-01-23-1.png public/cert/특허증 (산처리 장치)2019-12-20-1.png
 const patents = [
   {
     title: "산처리 장치 특허",
@@ -72,134 +65,73 @@ const patents = [
 
 export default function StatusPage() {
   return (
-    <>
-      <main className="bg-slate-50">
-        <section className="py-16 sm:py-20 lg:py-24">
-          <div className="container mx-auto px-4">
-            <div className="mx-auto mb-12 max-w-2xl text-center">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                인증 현황
-              </h2>
-              <p className="mt-4 text-lg leading-8 text-gray-600">
-                CS 이노베이션은 엄격한 국제 표준과 자체 기술력을 바탕으로 최고의
-                품질을 약속합니다.
-              </p>
-            </div>
-
-            <Swiper
-              modules={[Pagination, Navigation, Autoplay]}
-              spaceBetween={30}
-              slidesPerView={1}
-              navigation
-              pagination={{ clickable: true }}
-              autoplay={{
-                delay: 5000,
-                disableOnInteraction: false,
-              }}
-              breakpoints={{
-                640: {
-                  slidesPerView: 2,
-                  spaceBetween: 20,
-                },
-                1024: {
-                  slidesPerView: 3,
-                  spaceBetween: 30,
-                },
-              }}
-              className="!pb-12" // For pagination dots
+    <main className="bg-gray-50 py-16">
+      <div className="max-w-6xl mx-auto px-4">
+        <Tab.Group>
+          <Tab.List className="flex justify-center space-x-4 mb-12">
+            <Tab
+              className={({ selected }) =>
+                `px-6 py-2 rounded-full font-semibold transition ${
+                  selected
+                    ? "bg-purple-600 text-white shadow-lg"
+                    : "bg-white text-gray-700 hover:bg-gray-100"
+                }`
+              }
             >
-              {certifications.map((cert, index) => (
-                <SwiperSlide key={index} className="h-auto">
-                  <Card className="group flex h-full flex-col overflow-hidden rounded-lg shadow-md transition-shadow hover:shadow-xl">
-                    <CardContent className="p-0">
-                      <img
-                        src={cert.imageUrl}
-                        alt={cert.title}
-                        className="w-full object-cover transition-transform group-hover:scale-105"
-                      />
+              인증 현황
+            </Tab>
+            <Tab
+              className={({ selected }) =>
+                `px-6 py-2 rounded-full font-semibold transition ${
+                  selected
+                    ? "bg-purple-600 text-white shadow-lg"
+                    : "bg-white text-gray-700 hover:bg-gray-100"
+                }`
+              }
+            >
+              특허 현황
+            </Tab>
+          </Tab.List>
 
-                      {/* <Image
-                        src={cert.imageUrl}
-                        alt={cert.title}
-                        width={600}
-                        height={1200}
-                        className="aspect-[4/3] w-full object-cover transition-transform group-hover:scale-105"
-                      /> */}
+          <Tab.Panels>
+            {[
+              { data: certifications, title: "인증 현황" },
+              { data: patents, title: "특허 현황" },
+            ].map((section, idx) => (
+              <Tab.Panel
+                key={idx}
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+              >
+                {section.data.map((item, i) => (
+                  <Card
+                    key={i}
+                    className="group bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition"
+                  >
+                    <CardContent className="p-0 relative">
+                      <Image
+                        src={item.imageUrl}
+                        alt={item.title}
+                        width={640}
+                        height={360}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent opacity-30"></div>
                     </CardContent>
-                    <CardHeader className="flex-1 p-6">
-                      <CardTitle className="text-xl font-semibold text-gray-800">
-                        {cert.title}
+                    <CardHeader className="p-6">
+                      <CardTitle className="text-lg font-semibold text-gray-900">
+                        {item.title}
                       </CardTitle>
-                      <CardDescription className="mt-2 text-gray-600">
-                        {cert.description}
+                      <CardDescription className="mt-2 text-gray-500">
+                        {item.description}
                       </CardDescription>
                     </CardHeader>
                   </Card>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-        </section>
-
-        <section className="py-16 sm:py-20 lg:py-24">
-          <div className="container mx-auto px-4">
-            <div className="mx-auto mb-12 max-w-2xl text-center">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                특허 현황
-              </h2>
-              <p className="mt-4 text-lg leading-8 text-gray-600">
-                CS 이노베이션은 지속적인 연구개발을 통해 혁신적인 기술을
-                선보이고 있습니다.
-              </p>
-            </div>
-
-            <Swiper
-              modules={[Pagination, Navigation, Autoplay]}
-              spaceBetween={30}
-              slidesPerView={1}
-              navigation
-              pagination={{ clickable: true }}
-              autoplay={{
-                delay: 5000,
-                disableOnInteraction: false,
-              }}
-              breakpoints={{
-                640: {
-                  slidesPerView: 2,
-                  spaceBetween: 20,
-                },
-                1024: {
-                  slidesPerView: 3,
-                  spaceBetween: 30,
-                },
-              }}
-              className="!pb-12" // For pagination dots
-            >
-              {patents.map((cert, index) => (
-                <SwiperSlide key={index} className="h-auto">
-                  <Card className="group flex h-full flex-col overflow-hidden rounded-lg shadow-md transition-shadow hover:shadow-xl">
-                    <CardContent className="p-0">
-                      <img
-                        src={cert.imageUrl}
-                        alt={cert.title}
-                        className="w-full object-cover transition-transform group-hover:scale-105"
-                      />
-                    </CardContent>
-                    <CardHeader className="flex-1 p-6">
-                      <CardTitle className="text-xl font-semibold text-gray-800">
-                        {cert.title}
-                      </CardTitle>
-                      <CardDescription className="mt-2 text-gray-600">
-                        {cert.description}
-                      </CardDescription>
-                    </CardHeader>
-                  </Card>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-        </section>
-      </main>
-    </>
+                ))}
+              </Tab.Panel>
+            ))}
+          </Tab.Panels>
+        </Tab.Group>
+      </div>
+    </main>
   );
 }

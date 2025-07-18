@@ -1,298 +1,169 @@
 "use client";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
 
-import "swiper/css/pagination";
-import "swiper/css";
+import React from "react";
+import { motion } from "framer-motion";
+import ApProcess from "@/components/ApProcess";
+import ApBA from "@/components/ApBA";
+import {
+  Layers,
+  BoxIcon,
+  DropletIcon,
+  ClockIcon,
+  CheckCircleIcon,
+  ThermometerIcon,
+  ShieldIcon,
+  GlobeIcon,
+  Box,
+} from "lucide-react";
 
-function AboutPage() {
-  const beforeAfterPairs = [
-    {
-      before: "/product/before_AP1.jpg",
-      after: "/product/after_AP1.jpg",
-    },
-    {
-      before: "/product/before_AP2.jpg",
-      after: "/product/after_AP1.jpg",
-    },
-    // 필요한 만큼 추가
-  ];
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
 
-  const processSteps = [
-    "제품 입고",
-    "탈지",
-    "수세",
-    "산 세정",
-    "수세",
-    "중화",
-    "수세",
-    "건조",
-    "품질검사",
-    "출하",
-  ];
-
+function Section({
+  title,
+  icon,
+  children,
+}: {
+  title: string;
+  icon?: React.ReactNode;
+  children: React.ReactNode;
+}) {
   return (
-    <main
-      style={{
-        maxWidth: 800,
-        margin: "40px auto",
-        padding: "0 20px",
-        fontFamily: "'Noto Sans KR', sans-serif",
-        color: "#222", // 짙은 회색 텍스트
-        lineHeight: 1.6,
-        backgroundColor: "#f9f9f9", // 연한 회색 배경
-      }}
-      aria-label="산 세정 (Pickling) 소개 페이지"
+    <motion.section
+      className="mb-16"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={fadeInUp}
     >
-      <h1
-        style={{
-          fontSize: "2.8rem",
-          fontWeight: "800",
-          marginBottom: 30,
-          textAlign: "center",
-          color: "#111", // 거의 검정색
-          letterSpacing: "1px",
-        }}
-      >
-        산 세정 (Pickling)
-      </h1>
-
-      <section
-        style={{
-          marginBottom: 50,
-          borderRadius: 12,
-          overflow: "hidden",
-          boxShadow: "0 8px 20px rgba(0,0,0,0.12)",
-          backgroundColor: "#fff",
-        }}
-        aria-label="비포 애프터 이미지 스와이퍼"
-      >
-        <Swiper
-          modules={[Autoplay, Pagination]}
-          slidesPerView={1}
-          slidesPerGroup={1}
-          loop={true}
-          autoplay={{
-            delay: 4000,
-            disableOnInteraction: false,
-          }}
-          pagination={{ clickable: true }}
-          spaceBetween={0}
-          style={{ overflow: "hidden" }}
-        >
-          {beforeAfterPairs.map((pair, idx) => (
-            <SwiperSlide key={idx}>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  gap: 12,
-                }}
-              >
-                <div
-                  style={{
-                    flex: 1,
-                    borderRadius: 12,
-                    overflow: "hidden",
-                    boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
-                    backgroundColor: "#e0e0e0",
-                  }}
-                >
-                  <img
-                    src={pair.before}
-                    alt={`비포 이미지 ${idx + 1}`}
-                    style={{ width: "100%", display: "block" }}
-                    loading="lazy"
-                  />
-                  <div
-                    style={{
-                      textAlign: "center",
-                      padding: "8px 0",
-                      fontWeight: "700",
-                      backgroundColor: "#333",
-                      color: "#ddd",
-                      userSelect: "none",
-                    }}
-                  >
-                    Before
-                  </div>
-                </div>
-
-                <div
-                  style={{
-                    flex: 1,
-                    borderRadius: 12,
-                    overflow: "hidden",
-                    boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
-                    backgroundColor: "#e0e0e0",
-                  }}
-                >
-                  <img
-                    src={pair.after}
-                    alt={`애프터 이미지 ${idx + 1}`}
-                    style={{ width: "100%", display: "block" }}
-                    loading="lazy"
-                  />
-                  <div
-                    style={{
-                      textAlign: "center",
-                      padding: "8px 0",
-                      fontWeight: "700",
-                      backgroundColor: "#333",
-                      color: "#ddd",
-                      userSelect: "none",
-                    }}
-                  >
-                    After
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </section>
-
-      <div
-        style={{
-          width: "100%",
-          height: 280,
-          borderRadius: 12,
-          backgroundColor: "#e0e0e0",
-          marginBottom: 30,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          color: "#666",
-          fontSize: 18,
-          fontStyle: "italic",
-          userSelect: "none",
-        }}
-      >
-        {/* 나중에 사진 넣을 자리 */}
-        사진 영역 (추후 삽입 예정)
+      <div className="flex items-center mb-4">
+        {icon && <div className="mr-3 text-blue-600">{icon}</div>}
+        <h2 className="text-2xl font-bold border-b-4 border-blue-600 pb-2 text-gray-800">
+          {title}
+        </h2>
       </div>
-
-      {/* 개요 설명 */}
-      <section style={{ marginBottom: 40 }}>
-        <h2
-          style={{
-            fontSize: "1.8rem",
-            fontWeight: "700",
-            marginBottom: 15,
-            borderBottom: "3px solid #444",
-            paddingBottom: 8,
-            color: "#111",
-          }}
-        >
-          개요
-        </h2>
-        <p style={{ fontSize: 18, color: "#333" }}>
-          열변색(heat tint) 또는 산화물 스케일(oxide scale) 제거와 스테인리스
-          스틸을 녹일 수 있는 <strong>화학적 처리 방식</strong>입니다.
-        </p>
-      </section>
-
-      {/* 주요 적용 분야 */}
-      <section style={{ marginBottom: 40 }}>
-        <h2
-          style={{
-            fontSize: "1.8rem",
-            fontWeight: "700",
-            marginBottom: 15,
-            borderBottom: "3px solid #444",
-            paddingBottom: 8,
-            color: "#111",
-          }}
-        >
-          주요 적용 분야
-        </h2>
-        <ul
-          style={{
-            fontSize: 18,
-            paddingLeft: 20,
-            listStyleType: "disc",
-            color: "#444",
-          }}
-        >
-          <li>티타늄 플레이트</li>
-          <li>각종 탱크류</li>
-          <li>파이프 부속 일체</li>
-        </ul>
-      </section>
-
-      {/* 공정 - 카드 형식 */}
-      <section style={{ marginBottom: 40 }}>
-        <h2
-          style={{
-            fontSize: "1.8rem",
-            fontWeight: "700",
-            marginBottom: 15,
-            borderBottom: "3px solid #444",
-            paddingBottom: 8,
-            color: "#111",
-          }}
-        >
-          공정
-        </h2>
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: 16,
-            justifyContent: "center",
-          }}
-        >
-          {processSteps.map((step, i) => (
-            <div
-              key={i}
-              style={{
-                minWidth: 130,
-                padding: 16,
-                borderRadius: 10,
-                backgroundColor: "#ddd",
-                boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
-                textAlign: "center",
-                fontWeight: "600",
-                fontSize: 16,
-                userSelect: "none",
-                cursor: "default",
-                color: "#222",
-              }}
-            >
-              <div
-                style={{
-                  fontSize: 20,
-                  fontWeight: "800",
-                  marginBottom: 8,
-                  color: "#111",
-                }}
-              >
-                {i + 1}
-              </div>
-              <div>{step}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 향후 상세설명/추가 정보 자리 */}
-      <section
-        style={{
-          marginTop: 60,
-          padding: 20,
-          backgroundColor: "#ddd",
-          borderRadius: 10,
-          textAlign: "center",
-          fontSize: 16,
-          color: "#555",
-          fontStyle: "italic",
-          userSelect: "none",
-        }}
-      >
-        상세 설명 및 사진, 추가 공정 정보는 추후 업데이트 예정입니다.
-      </section>
-    </main>
+      <div className="prose prose-neutral max-w-none text-gray-700">
+        {children}
+      </div>
+    </motion.section>
   );
 }
 
-export default AboutPage;
+export default function AboutPage() {
+  return (
+    <main className="max-w-4xl mx-auto my-20 px-6 md:px-8 lg:px-0 font-sans text-gray-800">
+      {/* Header */}
+      <motion.header
+        className="mb-20 text-center"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeInUp}
+      >
+        <h1 className="text-5xl font-extrabold text-gray-900 leading-tight">
+          산 세정 (Pickling) Process
+        </h1>
+        <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+          금속 표면의 산화 스케일, 열변색, 부식층 등을 화학적으로 제거하여 후속
+          공정 품질과 내구성을 향상시키는 핵심 세정 기술입니다.
+        </p>
+      </motion.header>
+
+      {/* Before-After */}
+      <ApBA />
+
+      <Section title="개요" icon={<Layers size={24} />}>
+        <p>
+          산세정(Pickling)은 금속 표면에 달라붙은 불순물과 산화층을 말끔히
+          제거해 깨끗하고 매끄러운 상태로 만드는 핵심 공정입니다. 이 과정을 통해
+          보이지 않은 미세 결함까지 정리되어 부품의 전체적인 품질이 크게
+          향상됩니다.
+        </p>
+        <p>
+          결과적으로 후속 도금, 코팅, 용접 등 다양한 공정에서 부착력(adhesion)이
+          높아지고, 제품의 내구성과 성능이 안정적으로 유지됩니다.
+        </p>
+      </Section>
+
+      {/* When Needed */}
+      <Section title="산세정이 필요한 경우" icon={<ClockIcon size={24} />}>
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <li>• 열처리 공정 후 표면에 형성된 산화물과 열변색 제거</li>
+          <li>• 용접 후 열영향부(HAZ) 주변 스케일 제거로 균열 방지</li>
+          <li>• 후속 도금·코팅 전 표면 청정도 확보로 부착력 개선</li>
+          <li>• 장기 보관된 금속 부품의 초기 부식층 제거</li>
+          <li>• 구조물 내부 탱크·파이프 내부 스케일 제거</li>
+          <li>• 화학 분석 전 샘플 표면 준비</li>
+        </ul>
+      </Section>
+
+      {/* Benefits */}
+      <Section title="장점 및 효과" icon={<CheckCircleIcon size={24} />}>
+        <ul className="space-y-4">
+          <li className="flex items-start">
+            <CheckCircleIcon className="text-green-500 mr-3 mt-1" />
+            <div>
+              <strong>내구성 향상:</strong> 부식 억제 및 표면 피로율 감소로 제품
+              수명 연장
+            </div>
+          </li>
+          <li className="flex items-start">
+            <CheckCircleIcon className="text-green-500 mr-3 mt-1" />
+            <div>
+              <strong>품질 안정화:</strong> 균일한 표면 조도 확보로 도금·코팅
+              품질 및 색상 일관성 향상
+            </div>
+          </li>
+          <li className="flex items-start">
+            <CheckCircleIcon className="text-green-500 mr-3 mt-1" />
+            <div>
+              <strong>비용 절감:</strong> 불량률 감소 및 재작업 최소화로 총
+              유지보수 비용 절감
+            </div>
+          </li>
+        </ul>
+      </Section>
+
+      {/* 주요 적용 분야 */}
+      <Section title="주요 적용 분야" icon={<Box size={24} />}>
+        <div className="grid grid-cols-1  gap-6">
+          <motion.div
+            className="flex items-start"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <BoxIcon className="text-blue-600 mr-3" />
+            <p>티타늄 플레이트: 고내식성 플레이트의 표면 정밀 세정</p>
+          </motion.div>
+          <motion.div
+            className="flex items-start"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <Layers className="text-blue-600 mr-3" />
+            <p>각종 탱크류: 내부 부식 및 스케일 제거를 통한 수명 연장</p>
+          </motion.div>
+          <motion.div
+            className="flex items-start"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <DropletIcon className="text-blue-600 mr-3" />
+            <p>파이프 부속 일체: 유체 흐름 최적화를 위한 내부 세정</p>
+          </motion.div>
+        </div>
+      </Section>
+
+      {/* Process Flow */}
+      <ApProcess />
+    </main>
+  );
+}

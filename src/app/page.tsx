@@ -2,10 +2,9 @@
 
 import { useEffect, useState } from "react";
 import Head from "next/head";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 import { useRouter } from "next/navigation";
 import TimelineScrollMotion from "@/components/ScrollHistory";
+import Vision from "@/components/Vision";
 
 export default function Component() {
   const [bgUrl, setBgUrl] = useState("/img_visual_bg01.png");
@@ -24,40 +23,6 @@ export default function Component() {
     window.addEventListener("resize", updateBackground); // 리사이즈 대응
     return () => window.removeEventListener("resize", updateBackground);
   }, []);
-  const history = [
-    { year: "2018", desc: "CS 이노베이션 설립" },
-    { year: "2019", desc: "ISO 9001 인증 획득" },
-    { year: "2020", desc: "신공장 준공 및 자동화 설비 도입" },
-    { year: "2022", desc: "글로벌 파트너십 체결" },
-    { year: "2023", desc: "AI 기반 품질 시스템 도입" },
-  ];
-
-  const values = [
-    {
-      title: "INNOVATIVE",
-      subtitle: "혁신과 변화",
-      description: "새로운 생각과 기술로 전해연마의 가능성을 넓혀갑니다.",
-      icon: 1,
-    },
-    {
-      title: "PRECISION",
-      subtitle: "정밀함",
-      description: "완벽한 균일성을 만드는 정밀함.",
-      icon: 2,
-    },
-    {
-      title: "RELIABILITY",
-      subtitle: "신뢰성",
-      description: "고객의 신뢰에 응답하는 철저한 일정과 품질.",
-      icon: 3,
-    },
-    {
-      title: "COMMITMENT",
-      subtitle: "약속",
-      description: "고객과의 약속을 지키는 CS이노베이션의 다짐.",
-      icon: 4,
-    },
-  ];
 
   return (
     <>
@@ -85,43 +50,7 @@ export default function Component() {
       </Head>
       <div className="flex min-h-screen flex-col ">
         <main className="flex-1 ">
-          <section className="py-10 px-4 bg-white">
-            <div className="container mx-auto px-3">
-              <h2 className="text-sm font-semibold text-gray-800 mb-2">
-                02 ABOUT US
-              </h2>
-              <h2 className="text-4xl font-extrabold mb-4 text-gray-900 leading-snug">
-                미션과 비전
-              </h2>
-              <p className="text-xl font-semibold text-[#b6b0b0] mb-10">
-                "The direction that Electro-Polishing should take.."
-              </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-                {values.map(({ title, subtitle, description }, index) => (
-                  <div key={index} className=" p-6 shadow-sm border-b ">
-                    <div className="flex items-center mb-4">
-                      <img
-                        src={`/icons/ico_N3_0${index + 1}.svg`}
-                        alt={`Icon ${index + 1}`}
-                        className="h-10 w-10 mr-3 bg-black"
-                      />
-                      <h3 className="text-md font-bold text-gray-900">
-                        {title}
-                      </h3>
-                    </div>
-                    <h4 className="text-sm font-semibold text-gray-700 mb-2">
-                      {subtitle}
-                    </h4>
-                    <p className="text-sm text-gray-700 leading-relaxed">
-                      <br />
-                      {description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
+          <Vision />
 
           <section
             className="py-16 md:py-24 h-screen flex items-center bg-gray-50"
@@ -238,15 +167,15 @@ export default function Component() {
                   <div className="flex animate-slide gap-4 w-max">
                     {/* 원본 + 복제 슬라이드 */}
                     {[...Array(2)].flatMap((_, dup) =>
-                      [...Array(5)].map((_, i) => {
-                        const imgIndex = rowIndex * 5 + i + 1;
+                      [...Array(6)].map((_, i) => {
+                        const imgIndex = rowIndex * 6 + i + 1; // ← 여기!
                         return (
                           <div
                             key={`${dup}-${imgIndex}`}
                             className="flex-shrink-0"
                           >
                             <img
-                              src={`/images/img_N7_0${imgIndex}.png`}
+                              src={`/logo/logo${imgIndex}.png`}
                               alt={`Partner ${imgIndex}`}
                               className="h-20 w-36 md:h-40 md:w-60 object-contain p-4 bg-white bg-opacity-80 rounded-xl shadow hover:shadow-lg transition"
                             />

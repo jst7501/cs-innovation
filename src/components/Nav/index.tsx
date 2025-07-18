@@ -1,78 +1,91 @@
-import { Button } from "@mui/material";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
 import Link from "next/link";
-import react from "react";
+import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
-const Nav = () => {
+const navItems = [
+  { title: "회사소개", href: "/about" },
+  { title: "전해연마", href: "/EP" },
+  { title: "산처리", href: "/AP" },
+  { title: "인증현황", href: "/certifications" },
+];
+
+const menuVariants = {
+  closed: { height: 0, opacity: 0, transition: { duration: 0.3 } },
+  open: { height: "auto", opacity: 1, transition: { duration: 0.3 } },
+};
+
+const itemVariants = {
+  closed: { opacity: 0, x: -20, transition: { duration: 0.2 } },
+  open: { opacity: 1, x: 0, transition: { duration: 0.2 } },
+};
+
+export default function Nav() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
-    <>
-      {" "}
-      <header className=" sticky top-0 z-50 w-full border-b bg-transparent backdrop-blur supports-[backdrop-filter]:bg-white/60 px-5">
-        <div className="container flex h-16 items-center justify-between">
-          <Link className="flex items-center gap-2" href="#">
-            <span className="text-xl font-bold text-black ">CS Innovation</span>
+    <header className="fixed  top-0 z-50 w-full transition-colors duration-300 backdrop-blur bg-black/40 shadow-md">
+      <div className="container mx-auto px-5">
+        <div className="flex h-16 items-center justify-between">
+          {/* Logo / Title */}
+          <Link href="/" className="flex items-center gap-2">
+            <span className="text-2xl font-extrabold text-white tracking-tight">
+              CS Innovation
+            </span>
           </Link>
-          <nav className="hidden md:flex items-center px-8 gap-4 ">
-            {[
-              "회사소개",
-              "전해연마",
-              "산처리",
-              "인증현황",
-              "보유시설",
-              "고객지원",
-            ].map((item) => (
-              <Link
-                key={item}
-                href="#"
-                className="
 
-        text-[15px] 
-        font-semibold 
-        text-gray-700 
-        hover:text-gray-900 
-        transition-colors
-      "
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-6">
+            {navItems.map((item) => (
+              <Link
+                key={item.title}
+                href={item.href}
+                className="text-white font-medium text-sm uppercase tracking-wide hover:text-gray-300 transition-colors"
               >
-                {item}
+                {item.title}
               </Link>
             ))}
           </nav>
-        </div>
-      </header>
-      {/* {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden bg-white border-b"
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden text-white focus:outline-none"
+            aria-label="메뉴 토글"
           >
-            <nav className="container py-4 flex flex-col gap-2">
-              {[
-                "회사소개",
-                "전해연마",
-                "산처리",
-                "인증현황",
-                "보유시설",
-                "고객지원",
-              ].map((item) => (
-                <Link
-                  key={item}
-                  href="#"
-                  className="
-                  ml-5
-        text-[15px] 
-        font-semibold 
-        text-gray-700 
-        hover:text-gray-900 
-        transition-colors
-      "
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
+        {/* Mobile Navigation with Animation */}
+        <AnimatePresence initial={false}>
+          {mobileMenuOpen && (
+            <motion.nav
+              initial="closed"
+              animate="open"
+              exit="closed"
+              variants={menuVariants}
+              className="md:hidden overflow-hidden transform origin-top"
+            >
+              {navItems.map((item) => (
+                <motion.div
+                  key={item.title}
+                  variants={itemVariants}
+                  className="py-2"
                 >
-                  {item}
-                </Link>
+                  <Link
+                    href={item.href}
+                    className="text-white font-medium text-lg uppercase tracking-wide hover:text-gray-300 transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.title}
+                  </Link>
+                </motion.div>
               ))}
-            </nav>
-          </motion.div>
-        )}</> */}
-    </>
+            </motion.nav>
+          )}
+        </AnimatePresence>
+      </div>
+    </header>
   );
-};
+}
