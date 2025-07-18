@@ -1,23 +1,39 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 import Image from "next/image";
 
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+const fadeInOut = {
+  hidden: { opacity: 0, y: 10 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+  exit: { opacity: 0, y: -10, transition: { duration: 0.3 } },
 };
 
 const workPhotos = Array.from({ length: 15 }, (_, i) => ({
   src: `/product/AP${i + 1}.jpg`,
 }));
 
+const PER_PAGE = 15;
+
 export default function WorkGallery() {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const offset = (currentPage - 1) * PER_PAGE;
+  const currentPhotos = workPhotos.slice(offset, offset + PER_PAGE);
+
+  const handlePageChange = (
+    _event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setCurrentPage(value);
+  };
 
   return (
     <motion.section
@@ -25,38 +41,53 @@ export default function WorkGallery() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
-      variants={fadeIn}
+      variants={fadeInOut}
     >
-      <p className="text-center text-lg md:text-2xl font-semibold mb-8">
-        AP(산처리) 공정의 작업 사진 갤러리입니다.
-      </p>
-      <p className="text-center text-sm md:text-base text-gray-500 mb-12">
-        이미지 클릭시 확대하여 볼 수 있습니다.
-      </p>
       <div className="rounded-2xl p-[2px] bg-gradient-to-r from-green-200 to-blue-200 shadow-md">
         <div className="bg-white rounded-2xl p-4">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-            {workPhotos.map((photo, idx) => (
-              <motion.div
-                key={idx}
-                className="relative overflow-hidden rounded-lg shadow-sm cursor-pointer"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-                onClick={() => {
-                  setIndex(idx);
-                  setOpen(true);
-                }}
-              >
-                <Image
-                  src={photo.src}
-                  alt={`Work ${idx + 1}`}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 20vw"
-                  className="object-cover"
-                />
-              </motion.div>
-            ))}
-          </div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentPage} // 페이지마다 리렌더하면서 애니메이션
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4"
+              variants={fadeInOut}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              {currentPhotos.map((photo, idx) => (
+                <motion.div
+                  key={idx}
+                  className="relative overflow-hidden rounded-lg shadow-sm cursor-pointer aspect-square"
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ duration: 0.2 }}
+                  onClick={() => {
+                    setIndex(offset + idx);
+                    setOpen(true);
+                  }}
+                >
+                  <Image
+                    src={photo.src}
+                    alt={`Work ${offset + idx + 1}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 20vw"
+                    className="object-cover"
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
+
+          <Stack spacing={2} className="mt-6 items-center">
+            <Pagination
+              count={Math.ceil(workPhotos.length / PER_PAGE)}
+              page={currentPage}
+              onChange={handlePageChange}
+              color="primary"
+              shape="rounded"
+              siblingCount={1}
+              boundaryCount={1}
+            />
+          </Stack>
         </div>
       </div>
 
