@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://cs-innovation.vercel.app
+
+# Sitemaps
+Sitemap: https://cs-innovation.vercel.app/sitemap.xml

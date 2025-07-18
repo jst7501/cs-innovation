@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Script from "next/script";
 import { Metadata } from "next";
+import Image from "next/image";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -35,6 +36,18 @@ export default function RootLayout({
   return (
     <html lang="ko" className="scroll-smooth">
       <head>
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=G-4NLJMMY062`}
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-4NLJMMY062');
+          `}
+        </Script>
         <Script id="gtm-head" strategy="afterInteractive">
           {`
         (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -58,16 +71,15 @@ export default function RootLayout({
         </noscript>
         {/* <Nav /> */}
         {/* Hero Section */}
-        <section
-          className="relative overflow-hidden flex items-end justify-start bg-black"
-          style={{
-            backgroundImage: `url('/images/glassbg3.jpg')`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            height: "60vh",
-          }}
-        >
+        <section className="relative overflow-hidden flex items-end justify-start bg-black">
+          <Image
+            src="/images/glassbg3.jpg"
+            alt="Hero Background"
+            fill
+            priority
+            sizes="60vw"
+            className="object-cover"
+          />
           <div className="relative z-10 p-10 md:p-20">
             <h1 className="text-2xl md:text-8xl font-bold text-white drop-shadow-md">
               Beyond Precision
