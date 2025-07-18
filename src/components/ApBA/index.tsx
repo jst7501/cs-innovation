@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+import Image from "next/image";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -46,11 +47,12 @@ export default function WorkGallery() {
                   setOpen(true);
                 }}
               >
-                <img
+                <Image
                   src={photo.src}
                   alt={`Work ${idx + 1}`}
-                  className="w-full aspect-square object-cover"
-                  loading="lazy"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 20vw"
+                  className="object-cover"
                 />
               </motion.div>
             ))}

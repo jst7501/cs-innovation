@@ -6,6 +6,7 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import Image from "next/image";
 
 const fadeInOut = {
   hidden: { opacity: 0, y: 10 },
@@ -56,7 +57,7 @@ export default function WorkGallery() {
               {currentPhotos.map((photo, idx) => (
                 <motion.div
                   key={idx}
-                  className="relative overflow-hidden rounded-lg shadow-sm cursor-pointer"
+                  className="relative overflow-hidden rounded-lg shadow-sm cursor-pointer aspect-square"
                   whileHover={{ scale: 1.03 }}
                   transition={{ duration: 0.2 }}
                   onClick={() => {
@@ -64,11 +65,12 @@ export default function WorkGallery() {
                     setOpen(true);
                   }}
                 >
-                  <img
+                  <Image
                     src={photo.src}
                     alt={`Work ${offset + idx + 1}`}
-                    className="w-full aspect-square object-cover"
-                    loading="lazy"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 20vw"
+                    className="object-cover"
                   />
                 </motion.div>
               ))}
