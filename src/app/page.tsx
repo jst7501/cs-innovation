@@ -8,22 +8,7 @@ import Vision from "@/components/Vision";
 import Nav from "@/components/Nav";
 
 export default function Component() {
-  const [bgUrl, setBgUrl] = useState("/img_visual_bg01.png");
   const router = useRouter();
-  useEffect(() => {
-    const updateBackground = () => {
-      const isMobile = window.innerWidth < 768;
-      setBgUrl(
-        isMobile
-          ? "/images/img_visual_bg01_m.png"
-          : "/images/img_visual_bg01.png"
-      );
-    };
-
-    updateBackground(); // 초기 실행
-    window.addEventListener("resize", updateBackground); // 리사이즈 대응
-    return () => window.removeEventListener("resize", updateBackground);
-  }, []);
 
   return (
     <>
