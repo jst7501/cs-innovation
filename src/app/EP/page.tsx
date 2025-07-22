@@ -88,7 +88,9 @@ export default function EPPage() {
           </h1>
           <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
             표면의 미세 요철을 제거하고 내식성을 극대화하는 화학·전기 융합 처리
-            기술로, 후속 공정의 품질 기준을 한 단계 높입니다.
+            기술로,
+            <br />
+            후속 공정의 품질 기준을 한 단계 높입니다.
           </p>
         </motion.header>
         {/* Before-After */}

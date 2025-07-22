@@ -80,7 +80,7 @@ const missions = [
     title: "전해연마",
     subtitle: "Electro-Polishing",
     description:
-      "금속 표면에 미러 광택을 제공하여 내구성과 미관을 동시에 향상합니다.",
+      "금속 표면에 미러 광택을 제공하여 내식성과 미관을 동시에 향상합니다.",
     icon: `/icons/ico_N3_01.svg`,
   },
   {
@@ -179,6 +179,7 @@ export default function Vision() {
           sx={{
             textAlign: "center",
             mb: { xs: 4, md: 6 },
+            mt: { xs: 6, md: 8 },
             color: "common.white",
           }}
         >

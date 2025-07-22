@@ -8,8 +8,13 @@ import {
   CardContent,
   Divider,
   Typography,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
 } from "@mui/material";
 import { FaIndustry, FaFlask, FaSprayCan, FaTools } from "react-icons/fa";
+import { FiberManualRecord } from "@mui/icons-material"; // 리스트 아이템용 아이콘
 
 const facilities = [
   {
@@ -39,57 +44,58 @@ const facilities = [
 ];
 
 /**
- * 보유 설비 컴포넌트 (Grid + Card)
+ * 보유 설비 컴포넌트 (MUI Grid와 Card 활용)
  */
 export default function Facilities() {
   return (
-    <Box sx={{ mt: 4 }}>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-        {facilities.map((fac) => (
-          <div key={fac.title} className="flex h-full">
-            <Card
-              elevation={3}
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                flexGrow: 1,
-                borderRadius: 2,
-                transition: "transform .3s, box-shadow .3s",
-                "&:hover": { transform: "translateY(-4px)", boxShadow: 6 },
-              }}
+    <Box sx={{ mt: 4, flexGrow: 1 }}>
+      <Grid container spacing={3}>
+        {facilities.map((facility) => (
+          <Card
+            elevation={3}
+            sx={{
+              height: "100%", // Grid 아이템의 높이를 100%로 설정하여 같은 행의 카드 높이를 통일
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              borderRadius: 2,
+              transition: "transform .3s, box-shadow .3s",
+              "&:hover": { transform: "translateY(-4px)", boxShadow: 6 },
+            }}
+          >
+            <CardContent
+              sx={{ display: "flex", flexDirection: "column", flexGrow: 1 }}
             >
-              <CardContent
-                sx={{ display: "flex", flexDirection: "column", flexGrow: 1 }}
-              >
-                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                  <Box sx={{ mr: 2 }}>{fac.icon}</Box>
-                  <Typography variant="h6">{fac.title}</Typography>
-                </Box>
-
-                <Divider sx={{ mb: 1 }} />
-
-                <Box
-                  component="ul"
-                  sx={{
-                    pl: 2,
-                    m: 0,
-                    flexGrow: 1, // 남는 공간 채움
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "flex-start",
-                  }}
+              <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                <Box sx={{ mr: 2, color: "primary.main" }}>{facility.icon}</Box>
+                <Typography
+                  variant="h6"
+                  component="h3"
+                  sx={{ fontWeight: "bold" }}
                 >
-                  {fac.items.map((it) => (
-                    <li key={it}>
-                      <Typography variant="body2">{it}</Typography>
-                    </li>
-                  ))}
-                </Box>
-              </CardContent>
-            </Card>
-          </div>
+                  {facility.title}
+                </Typography>
+              </Box>
+              <Divider sx={{ mb: 1 }} />
+              <List sx={{ flexGrow: 1, py: 0 }}>
+                {facility.items.map((item) => (
+                  <ListItem key={item} sx={{ py: 0.5 }}>
+                    <ListItemIcon sx={{ minWidth: 28 }}>
+                      <FiberManualRecord
+                        sx={{ fontSize: 10, color: "text.secondary" }}
+                      />
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={item}
+                      primaryTypographyProps={{ variant: "body2" }}
+                    />
+                  </ListItem>
+                ))}
+              </List>
+            </CardContent>
+          </Card>
         ))}
-      </div>
+      </Grid>
     </Box>
   );
 }

@@ -14,7 +14,7 @@ const fadeInOut = {
   exit: { opacity: 0, y: -10, transition: { duration: 0.3 } },
 };
 
-const workPhotos = Array.from({ length: 15 }, (_, i) => ({
+const workPhotos = Array.from({ length: 13 }, (_, i) => ({
   src: `/product/AP${i + 1}.jpg`,
 }));
 

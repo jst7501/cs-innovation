@@ -10,6 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Typography } from "@mui/material";
 
 const certifications = [
   {
@@ -70,31 +71,40 @@ export default function StatusPage() {
       <main className="bg-gray-50 py-16">
         <div className="max-w-6xl mx-auto px-4">
           <Tab.Group>
+            {/* 탭 그룹 전체에 배경과 둥근 모서리 적용 */}
             <Tab.List className="flex justify-center space-x-4 mb-12">
               <Tab
                 className={({ selected }) =>
-                  `px-6 py-2 rounded-full font-semibold transition ${
-                    selected
-                      ? "bg-purple-600 text-white shadow-lg"
-                      : "bg-white text-gray-700 hover:bg-gray-100"
-                  }`
+                  // 공통 스타일: 부드러운 전환 효과, 포커스 시 외곽선 제거
+                  `px-6 py-2.5 rounded-lg font-semibold transition-all duration-200 ease-in-out focus:outline-none 
+      ${
+        selected
+          ? // 선택된 상태: 강렬한 색상과 그림자로 활성 상태 강조
+            "bg-purple-600 text-white shadow-lg"
+          : // 선택되지 않은 상태: 명확한 배경색과 그림자로 '버튼'임을 인지시킴
+            "bg-gray-200 text-gray-800 shadow-md hover:bg-gray-300 hover:-translate-y-0.5 active:scale-95"
+      }`
                 }
               >
                 인증 현황
               </Tab>
               <Tab
                 className={({ selected }) =>
-                  `px-6 py-2 rounded-full font-semibold transition ${
-                    selected
-                      ? "bg-purple-600 text-white shadow-lg"
-                      : "bg-white text-gray-700 hover:bg-gray-100"
-                  }`
+                  `px-6 py-2.5 rounded-lg font-semibold transition-all duration-200 ease-in-out focus:outline-none 
+      ${
+        selected
+          ? "bg-purple-600 text-white shadow-lg"
+          : "bg-gray-200 text-gray-800 shadow-md hover:bg-gray-300 hover:-translate-y-0.5 active:scale-95"
+      }`
                 }
               >
                 특허 현황
               </Tab>
             </Tab.List>
-
+            <p className="text-center text-gray-600 mb-8">
+              CS INNOVATION은 기술력과 품질을 바탕으로 다양한 인증과 특허를
+              보유하고 있습니다. 아래에서 자세한 내용을 확인하세요.
+            </p>
             <Tab.Panels>
               {[
                 { data: certifications, title: "인증 현황" },
